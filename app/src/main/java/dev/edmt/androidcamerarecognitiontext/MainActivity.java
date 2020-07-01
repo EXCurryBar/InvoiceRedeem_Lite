@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         textView3.setText(date.isEmpty()?"":date);
 
 
-
         final TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if (!textRecognizer.isOperational()) {
             Log.w("MainActivity", "Detector dependencies are not yet available");
@@ -266,6 +265,8 @@ class cr extends Thread {
                 return "4千元";
             if (invoice.substring(4).compareTo(MainActivity.EightNum[i].substring(4)) == 0)
                 return "1千元";
+            if (invoice.substring(5).compareTo(MainActivity.EightNum[i].substring(5)) == 0)
+                return "2百元";
         }
         for (String s : MainActivity.ThreeNum) {
             if (invoice.substring(5).compareTo(s) == 0) {
