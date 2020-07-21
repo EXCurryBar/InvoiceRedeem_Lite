@@ -40,12 +40,15 @@ public class MainActivity extends AppCompatActivity {
     public static String[] ThreeNum = new String[6];
     public static String debugMessage = "";
     public static String date = "";
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+            @NonNull int[] grantResults) {
         switch (requestCode) {
             case RequestCameraPermissionID: {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(this,
+                            Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         return;
                     }
                     try {
@@ -56,31 +59,29 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-            break;
+                break;
         }
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         cameraView = (SurfaceView) findViewById(R.id.surface_view);
         textView = (TextView) findViewById(R.id.text_view);
-        textView2 = (TextView)findViewById(R.id.textView2);
-        textView3 = (TextView)findViewById(R.id.textView3);
-
+        textView2 = (TextView) findViewById(R.id.textView2);
+        textView3 = (TextView) findViewById(R.id.textView3);
 
         final cr c = new cr();
         c.start();
-        try{
+        try {
             c.join();
-        }catch (InterruptedException e){
-            debugMessage+=e.toString()+"\n";
+        } catch (InterruptedException e) {
+            debugMessage += e.toString() + "\n";
             textView.setText(debugMessage);
         }
-        textView3.setText(date.isEmpty()?"":date);
-
+        textView3.setText(date.isEmpty() ? "" : date);
 
         final TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
         if (!textRecognizer.isOperational()) {
@@ -88,22 +89,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             cameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
-                    .setFacing(CameraSource.CAMERA_FACING_BACK)
-                    .setRequestedPreviewSize(1280, 1024)
-                    .setRequestedFps(2.0f)
-                    .setAutoFocusEnabled(true)
-                    .build();
+                    .setFacing(CameraSource.CAMERA_FACING_BACK).setRequestedPreviewSize(1280, 1024)
+                    .setRequestedFps(2.0f).setAutoFocusEnabled(true).build();
             cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
                 @Override
                 public void surfaceCreated(SurfaceHolder surfaceHolder) {
 
                     try {
-                        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        if (ActivityCompat.checkSelfPermission(getApplicationContext(),
+                                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
-                                ActivityCompat.requestPermissions(MainActivity.this,
-                                        new String[]{Manifest.permission.CAMERA},
-                                        RequestCameraPermissionID);
-                             return;
+                            ActivityCompat.requestPermissions(MainActivity.this,
+                                    new String[] { Manifest.permission.CAMERA }, RequestCameraPermissionID);
+                            return;
                         }
                         cameraSource.start(cameraView.getHolder());
                     } catch (IOException e) {
@@ -132,32 +130,30 @@ public class MainActivity extends AppCompatActivity {
                 public void receiveDetections(Detector.Detections<TextBlock> detections) {
 
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
-                    if(items.size() != 0)
-                    {
+                    if (items.size() != 0) {
                         textView.post(new Runnable() {
                             Boolean flag = false;
                             Boolean dateFound = false;
+
                             @Override
                             public void run() {
                                 String t = "";
                                 String tmp = "";
-                                if(debugMessage.isEmpty()){
-                                    for(int i =0;i<items.size();++i)
-                                    {
+                                if (debugMessage.isEmpty()) {
+                                    for (int i = 0; i < items.size(); ++i) {
                                         TextBlock item = items.valueAt(i);
                                         matcher1 = pattern.matcher(item.getValue());
                                         matcher2 = pattern2.matcher(item.getValue());
                                         matcher3 = pattern3.matcher(item.getValue());
-                                        if(matcher3.find()){
-                                            String in = matcher3.group().substring(0,5);
-                                            flag = date.substring(4,9).equals(in);
+                                        if (matcher3.find()) {
+                                            String in = matcher3.group().substring(0, 5);
+                                            flag = date.substring(4, 9).equals(in);
                                             dateFound = !in.isEmpty();
                                         }
-                                        if(matcher2.find()){
+                                        if (matcher2.find()) {
                                             t = matcher2.group();
                                             break;
-                                        }
-                                        else if(matcher1.find()){
+                                        } else if (matcher1.find()) {
                                             t = matcher1.group();
                                             break;
                                         }
@@ -165,25 +161,25 @@ public class MainActivity extends AppCompatActivity {
                                         textView2.setText("");
                                     }
                                     for (int i = 2; i < t.length(); i++)
-                                        tmp+=t.charAt(i);
+                                        tmp += t.charAt(i);
                                     t = tmp;
                                     tmp = c.check(tmp);
-                                    if(dateFound){
-                                        if(flag){
+                                    if (dateFound) {
+                                        if (flag) {
                                             textView2.setTextSize(36);
-                                            t = "發票號碼 : "+t +(tmp.compareTo("請對齊發票")==0?tmp:"");
+                                            t = "發票號碼 : " + t + (tmp.compareTo("請對齊發票") == 0 ? tmp : "");
                                             textView.setText(t);
-                                            textView2.setText((tmp.compareTo("請對齊發票")==0?"":tmp));
-                                        }else if((tmp.compareTo("請對齊發票")!=0)){
+                                            textView2.setText((tmp.compareTo("請對齊發票") == 0 ? "" : tmp));
+                                        } else if ((tmp.compareTo("請對齊發票") != 0)) {
                                             String warningMessage = "這不是本月份發票哦!";
                                             textView2.setTextSize(22);
                                             textView2.setText(warningMessage);
                                         }
-                                    }else {
+                                    } else {
                                         t = "發票號碼 : 請對齊發票";
                                         textView.setText(t);
                                     }
-                                }else{
+                                } else {
                                     textView.setText("請檢查網路連線並重啟程式");
                                 }
                             }
@@ -194,44 +190,47 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
 class cr extends Thread {
     private String r;
     private String[] mth = new String[2];
     private static String[] EightNum = new String[5];
     private static String[] ThreeNum = new String[3];
     Pattern pattern = Pattern.compile("\\d{3}年\\d{2}月、\\d{2}");
+
     public void run() {
         try {
-            URL url = new URL("http://invoice.etax.nat.gov.tw/invoice.xml");
+            URL url = new URL("https://invoice.etax.nat.gov.tw/invoice.xml");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             int responseCode = urlConnection.getResponseCode();
             if (responseCode == 200) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "utf-8"));
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(urlConnection.getInputStream(), "utf-8"));
                 if ((r = reader.readLine()) != null) {
                     Matcher matcher = pattern.matcher(r);
                     for (int i = 0; i < mth.length; i++) {
                         if (matcher.find())
                             mth[i] = matcher.group();
                     }
-                    //===============================================   find newest month
-                    pattern = Pattern.compile(mth[0]+".*"+mth[1]);
+                    // =============================================== find newest month
+                    pattern = Pattern.compile(mth[0] + ".*" + mth[1]);
                     matcher = pattern.matcher(r);
-                    r = matcher.find()?matcher.group():r;
-                    //===============================================   find 8 number
+                    r = matcher.find() ? matcher.group() : r;
+                    // =============================================== find 8 number
                     pattern = Pattern.compile("\\d{8}");
                     matcher = pattern.matcher(r);
                     for (int i = 0; i < EightNum.length; i++) {
-                        EightNum[i] = matcher.find()?matcher.group():"";
+                        EightNum[i] = matcher.find() ? matcher.group() : "";
                     }
-                    //===============================================   find 3 number
+                    // =============================================== find 3 number
                     pattern = Pattern.compile("增開六獎：.*</description>");
                     matcher = pattern.matcher(r);
-                    r = matcher.find()?matcher.group():r;
+                    r = matcher.find() ? matcher.group() : r;
 
                     pattern = Pattern.compile("\\d{3}");
                     matcher = pattern.matcher(r);
                     for (int i = 0; i < ThreeNum.length; i++) {
-                        ThreeNum[i] = matcher.find()?matcher.group():"###";
+                        ThreeNum[i] = matcher.find() ? matcher.group() : "###";
                     }
                 }
             } else {
@@ -242,13 +241,15 @@ class cr extends Thread {
         }
         return_shit();
     }
-    private void return_shit(){
-        MainActivity.date = mth[0].replace("月、","-") + "月";
+
+    private void return_shit() {
+        MainActivity.date = mth[0].replace("月、", "-") + "月";
         MainActivity.EightNum = EightNum;
         MainActivity.ThreeNum = ThreeNum;
     }
+
     public String check(String invoice) {
-        if(invoice.isEmpty())
+        if (invoice.isEmpty())
             return "請對齊發票";
         if (invoice.compareTo(MainActivity.EightNum[0]) == 0)
             return "1000萬";
