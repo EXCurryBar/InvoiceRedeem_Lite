@@ -32,49 +32,48 @@
 20-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:11:9-41
 21        android:supportsRtl="true"
 21-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:12:9-35
-22        android:testOnly="true"
-23        android:theme="@style/AppTheme" >
-23-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:13:9-40
-24        <activity
-24-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:15:9-23:20
-25            android:name="dev.edmt.androidcamerarecognitiontext.MainActivity"
-25-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:15:19-47
-26            android:screenOrientation="portrait" >
-26-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:16:13-49
-27            <intent-filter>
-27-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:18:13-22:29
-28                <action android:name="android.intent.action.MAIN" />
-28-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:19:17-69
-28-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:19:25-66
-29
-30                <category android:name="android.intent.category.LAUNCHER" />
-30-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:21:17-77
-30-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:21:27-74
-31            </intent-filter>
-32        </activity>
-33
-34        <meta-data
-34-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:25:9-26:34
-35            android:name="com.google.android.gms.vision.DEPENDENCIES"
-35-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:25:20-77
-36            android:value="ocr" />
-36-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:26:13-32
-37
-38        <activity
-38-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:9-172
-39            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-39-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:19-85
-40            android:exported="false"
-40-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:146-170
-41            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-41-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:86-145
-42
-43        <meta-data
-43-->[com.google.android.gms:play-services-basement:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\64c11ad8297e1a89db40d69703e32701\play-services-basement-9.8.0\AndroidManifest.xml:20:9-121
-44            android:name="com.google.android.gms.version"
-44-->[com.google.android.gms:play-services-basement:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\64c11ad8297e1a89db40d69703e32701\play-services-basement-9.8.0\AndroidManifest.xml:20:20-65
-45            android:value="@integer/google_play_services_version" />
-45-->[com.google.android.gms:play-services-basement:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\64c11ad8297e1a89db40d69703e32701\play-services-basement-9.8.0\AndroidManifest.xml:20:66-119
-46    </application>
-47
-48</manifest>
+22        android:theme="@style/AppTheme" >
+22-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:13:9-40
+23        <activity
+23-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:15:9-23:20
+24            android:name="dev.edmt.androidcamerarecognitiontext.MainActivity"
+24-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:15:19-47
+25            android:screenOrientation="portrait" >
+25-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:16:13-49
+26            <intent-filter>
+26-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:18:13-22:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:19:17-69
+27-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:19:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:21:17-77
+29-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:21:27-74
+30            </intent-filter>
+31        </activity>
+32
+33        <meta-data
+33-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:25:9-26:34
+34            android:name="com.google.android.gms.vision.DEPENDENCIES"
+34-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:25:20-77
+35            android:value="ocr" />
+35-->C:\Users\user\Desktop\InvoiceRedeem_Lite\app\src\main\AndroidManifest.xml:26:13-32
+36
+37        <activity
+37-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:9-172
+38            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+38-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:19-85
+39            android:exported="false"
+39-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:146-170
+40            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+40-->[com.google.android.gms:play-services-base:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\a2576824536335d99716b63aa41bba50\play-services-base-9.8.0\AndroidManifest.xml:19:86-145
+41
+42        <meta-data
+42-->[com.google.android.gms:play-services-basement:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\64c11ad8297e1a89db40d69703e32701\play-services-basement-9.8.0\AndroidManifest.xml:20:9-121
+43            android:name="com.google.android.gms.version"
+43-->[com.google.android.gms:play-services-basement:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\64c11ad8297e1a89db40d69703e32701\play-services-basement-9.8.0\AndroidManifest.xml:20:20-65
+44            android:value="@integer/google_play_services_version" />
+44-->[com.google.android.gms:play-services-basement:9.8.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\64c11ad8297e1a89db40d69703e32701\play-services-basement-9.8.0\AndroidManifest.xml:20:66-119
+45    </application>
+46
+47</manifest>

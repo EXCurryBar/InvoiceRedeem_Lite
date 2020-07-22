@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
     CameraSource cameraSource;
     final int RequestCameraPermissionID = 1001;
     Pattern pattern = Pattern.compile("[A-Z]{2}-[0-9]{8}");
-    Pattern pattern2 = Pattern.compile("\\D{2}[0-9]{8}");
-    Pattern pattern3 = Pattern.compile("\\d{2}-\\d{2}[^-| ]");
-    Matcher matcher1, matcher2, matcher3;
+    Pattern pattern2 = Pattern.compile("[A-Z]{2}[ |][0-9]{8}");
+    Pattern pattern3 = Pattern.compile("\\d{2}-\\d{2}");
+    Pattern pattern4 = Pattern.compile("\\d-\\d");
+    Matcher matcher1, matcher2, matcher3, matcher4;
     public static String[] EightNum = new String[5];
     public static String[] ThreeNum = new String[6];
     public static String debugMessage = "";
@@ -145,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
                                         matcher1 = pattern.matcher(item.getValue());
                                         matcher2 = pattern2.matcher(item.getValue());
                                         matcher3 = pattern3.matcher(item.getValue());
+                                        matcher4 = pattern4.matcher(item.getValue());
+                                        if (matcher4.find()) {
+                                            String in = matcher4.group().substring(0, 3);
+                                            flag = date.substring(4, 9).replace("0","").equals(in);
+                                            dateFound = !in.isEmpty();
+                                        }
                                         if (matcher3.find()) {
                                             String in = matcher3.group().substring(0, 5);
                                             flag = date.substring(4, 9).equals(in);
@@ -165,18 +172,18 @@ public class MainActivity extends AppCompatActivity {
                                     t = tmp;
                                     tmp = c.check(tmp);
                                     if (dateFound) {
-                                       // if (flag) {
+                                        if (flag) {
                                             textView2.setTextSize(36);
                                             t = "發票號碼 : " + t + (tmp.compareTo("請對齊發票") == 0 ? tmp : "");
                                             textView.setText(t);
                                             textView2.setText((tmp.compareTo("請對齊發票") == 0 ? "" : tmp));
-                                       // }
-                                        /*else if ((tmp.compareTo("請對齊發票") != 0)) {
+                                        }
+                                        else if ((tmp.compareTo("請對齊發票") != 0)) {
                                             String warningMessage = "這不是本月份發票哦!";
                                             textView2.setTextSize(22);
                                             textView2.setText(warningMessage);
                                         }
-                                        */
+
                                     } else {
                                         t = "發票號碼 : 請對齊發票";
                                         textView.setText(t);
