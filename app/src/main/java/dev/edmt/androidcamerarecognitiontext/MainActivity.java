@@ -169,8 +169,8 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     for (int i = 2; i < t.length(); i++)
                                         tmp += t.charAt(i);
-                                    t = tmp;
-                                    tmp = c.check(tmp);
+                                    t = tmp.replace("-","");
+                                    tmp = c.check(tmp.replace("-",""));
                                     if (dateFound) {
                                         if (flag) {
                                             textView2.setTextSize(36);

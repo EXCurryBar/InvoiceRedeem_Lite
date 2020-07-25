@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Desktop-InvoiceRedeem_Lite-InvoiceRedeem.iml" filepath="$PROJECT_DIR$/.idea/modules/Desktop-InvoiceRedeem_Lite-InvoiceRedeem.iml" group="InvoiceRedeem" />
       <module fileurl="file://$PROJECT_DIR$/InvoiceRedeem.iml" filepath="$PROJECT_DIR$/InvoiceRedeem.iml" />
       <module fileurl="file://$PROJECT_DIR$/InvoiceRedeem-79607f7674b00ef91cb7e3ba20e64d9ed9fa4659-InvoiceRedeem.iml" filepath="$PROJECT_DIR$/InvoiceRedeem-79607f7674b00ef91cb7e3ba20e64d9ed9fa4659-InvoiceRedeem.iml" group="InvoiceRedeem" />
       <module fileurl="file://$PROJECT_DIR$/app/InvoiceRedeem-79607f7674b00ef91cb7e3ba20e64d9ed9fa4659-app.iml" filepath="$PROJECT_DIR$/app/InvoiceRedeem-79607f7674b00ef91cb7e3ba20e64d9ed9fa4659-app.iml" group="InvoiceRedeem/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/InvoiceRedeem-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/InvoiceRedeem-app.iml" group="InvoiceRedeem/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/InvoiceRedeem_Lite-InvoiceRedeem.iml" filepath="$PROJECT_DIR$/.idea/modules/InvoiceRedeem_Lite-InvoiceRedeem.iml" group="InvoiceRedeem" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/InvoiceRedeem_Lite-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/InvoiceRedeem_Lite-app.iml" group="InvoiceRedeem/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
