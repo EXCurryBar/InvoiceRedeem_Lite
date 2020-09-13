@@ -32,11 +32,12 @@ public class MainActivity extends AppCompatActivity {
     public static TextView textView3;
     CameraSource cameraSource;
     final int RequestCameraPermissionID = 1001;
-    Pattern pattern = Pattern.compile("[A-Z]{2}-[0-9]{8}");
-    Pattern pattern2 = Pattern.compile("[A-Z]{2}[ |][0-9]{8}");
+    Pattern pattern = Pattern.compile("[A-Z]{2}[0-9]{8}");
+    Pattern pattern2 = Pattern.compile("[A-Z]{2}[ |-][0-9]{8}");
     Pattern pattern3 = Pattern.compile("\\d{2}-\\d{2}");
     Pattern pattern4 = Pattern.compile("\\d-\\d");
-    Matcher matcher1, matcher2, matcher3, matcher4;
+    Pattern pattern5 = Pattern.compile("\\d-\\d{2}");
+    Matcher matcher1, matcher2, matcher3, matcher4, matcher5;
     public static String[] EightNum = new String[5];
     public static String[] ThreeNum = new String[6];
     public static String debugMessage = "";
@@ -147,8 +148,14 @@ public class MainActivity extends AppCompatActivity {
                                         matcher2 = pattern2.matcher(item.getValue());
                                         matcher3 = pattern3.matcher(item.getValue());
                                         matcher4 = pattern4.matcher(item.getValue());
+                                        matcher5 = pattern5.matcher(item.getValue());
                                         if (matcher4.find()) {
                                             String in = matcher4.group().substring(0, 3);
+                                            flag = date.substring(4, 9).replace("0","").equals(in);
+                                            dateFound = !in.isEmpty();
+                                        }
+                                        if (matcher5.find()) {
+                                            String in = matcher5.group().substring(0, 4).replace("0","");
                                             flag = date.substring(4, 9).replace("0","").equals(in);
                                             dateFound = !in.isEmpty();
                                         }
